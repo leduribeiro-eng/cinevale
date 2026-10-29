@@ -6,8 +6,6 @@ OUTPUT_JSON = "programacao.json"
 def gerar_programacao_atualizada():
     """
     Gera a programação consolidada baseada nos termos oficiais de cada local.
-    Como os cinemas atualizam semanalmente, aqui garantimos a estrutura exata
-    que o seu aplicativo de celular espera receber.
     """
     dados = [
         {
@@ -19,7 +17,7 @@ def gerar_programacao_atualizada():
             "filmes": [
                 { "titulo": "Venom: A Última Rodada", "audio": "Dublado", "horarios": ["14:30", "17:00", "19:30", "22:00"] },
                 { "titulo": "Robô Selvagem", "audio": "Dublado", "horarios": ["14:00", "16:15", "18:30"] },
-                { "titulo": "A Substância", audio: "Legendado", "horarios": ["21:00"] }
+                { "titulo": "A Substância", "audio": "Legendado", "horarios": ["21:00"] }
             ]
         },
         {
@@ -40,10 +38,10 @@ def gerar_programacao_atualizada():
             "maps": "https://maps.app.goo.gl/YarRsrmCyJZtp27V8",
             "site": "https://www.ingresso.com/cinema/cinemark-via-vale-taubate?city=taubate",
             "filmes": [
-                { "titulo": "Terrifier 3", audio: "Dublado", horarios: ["18:30", "21:10"] },
-                { "titulo": "Terrifier 3", audio: "Legendado", horarios: ["22:00"] },
-                { "titulo": "Venom: A Última Rodada", "audio": "Dublado", horarios: ["13:00", "15:30", "18:00", "20:30"] },
-                { "titulo": "Robô Selvagem", audio: "Dublado", horarios: ["12:45", "15:00", "17:15"] }
+                { "titulo": "Terrifier 3", "audio": "Dublado", "horarios": ["18:30", "21:10"] },
+                { "titulo": "Terrifier 3", "audio": "Legendado", "horarios": ["22:00"] },
+                { "titulo": "Venom: A Última Rodada", "audio": "Dublado", "horarios": ["13:00", "15:30", "18:00", "20:30"] },
+                { "titulo": "Robô Selvagem", "audio": "Dublado", "horarios": ["12:45", "15:00", "17:15"] }
             ]
         },
         {
@@ -53,8 +51,8 @@ def gerar_programacao_atualizada():
             "maps": "https://maps.app.goo.gl/XKC9BreksvCxsrof9",
             "site": "https://www.buritishopping-guara.com.br/",
             "filmes": [
-                { "titulo": "Venom: A Última Rodada", "audio": "Dublado", horarios: ["14:30", "17:00", "19:30", "22:00"] },
-                { "titulo": "Robô Selvagem", audio: "Dublado", horarios: ["14:00", "16:15"] }
+                { "titulo": "Venom: A Última Rodada", "audio": "Dublado", "horarios": ["14:30", "17:00", "19:30", "22:00"] },
+                { "titulo": "Robô Selvagem", "audio": "Dublado", "horarios": ["14:00", "16:15"] }
             ]
         },
         {
@@ -64,8 +62,8 @@ def gerar_programacao_atualizada():
             "maps": "https://maps.app.goo.gl/YYJ1kPiSiYk1Hcwq5",
             "site": "https://cinea.com.br/cine-a-lorena",
             "filmes": [
-                { "titulo": "Venom: A Última Rodada", audio: "Dublado", horarios: ["15:15", "17:45", "20:15"] },
-                { "titulo": "Robô Selvagem", audio: "Dublado", horarios: ["14:15", "16:30"] }
+                { "titulo": "Venom: A Última Rodada", "audio": "Dublado", "horarios": ["15:15", "17:45", "20:15"] },
+                { "titulo": "Robô Selvagem", "audio": "Dublado", "horarios": ["14:15", "16:30"] }
             ]
         }
     ]
@@ -74,7 +72,7 @@ def gerar_programacao_atualizada():
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(dados, f, ensure_ascii=False, indent=2)
     
-    print("Programação atualizada com base nos termos de pesquisa com sucesso!")
+    print("Programação atualizada com sucesso!")
 
 if __name__ == "__main__":
     gerar_programacao_atualizada()
