@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CineVale - Programação Oficial</title>
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f172a">
+  
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text);
+      margin: 0;
+      padding: 16px;
+      padding-bottom: 60px;
+    }
+
+    .container { max-width: 600px; margin: 0 auto; }
+
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { color: var(--accent); font-size: 24px; margin: 0 0 4px 0; }
+    p.subtitle { color: var(--text-muted); font-size: 13px; margin: 0; }
+
+    .search-box { margin-bottom: 20px; position: sticky; top: 10px; z-index: 10; }
+    .search-box input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(30, 41, 59, 0.95);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .search-box input:focus { outline: none; border-color: var(--accent); }
+
+    .dates-slider {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      scrollbar-width: none;
+    }
+    .dates-slider::-webkit-scrollbar { display: none; }
+
+    .date-chip {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .date-chip.active { background: var(--accent); color: #000; font-weight: bold; border-color: var(--accent); }
+
+    .cinema-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .cinema-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+
+    .cinema-title { font-size: 17px; font-weight: bold; margin: 0; }
+    .cinema-group { color: var(--accent); font-size: 12px; font-weight: 600; text-transform: uppercase; }
+
+    .cinema-actions { display: flex; gap: 8px; }
+    .btn-icon {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      color: #38bdf8;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .movie-item {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(51, 65, 85, 0.5);
+    }
+
+    .movie-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .movie-title { font-weight: 600; font-size: 15px; color: #f1f5f9; }
+    
+    .badge-audio { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+    .badge-dub { background: #0369a1; color: #e2e8f0; }
+    .badge-leg { background: #7c2d12; color: #e2e8f0; }
+
+    .schedules-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .time-chip { background: #0f172a; border: 1px solid var(--border); color: var(--accent); padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+    
+    .btn-print { display: inline-block; margin-top: 6px; font-size: 11px; color: #38bdf8; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>CineVale</h1>
+      <p class="subtitle">Programação Oficial Automatizada</p>
+    </header>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔍 Buscar filme em todas as cidades..." oninput="filtrarDados()">
+    </div>
+
+    <div class="dates-slider" id="datesSlider"></div>
+
+    <div id="cinemasContainer">Carregando programação oficial...</div>
+  </div>
+
+  <script>
+    let dadosCinemas = [];
+
+    async function carregarDados() {
+      try {
+        const resp = await fetch('programacao.json?t=' + new Date().getTime());
+        dadosCinemas = await resp.json();
+        renderizarCinemas(dadosCinemas);
+      } catch (e) {
+        document.getElementById('cinemasContainer').innerHTML = 
+          '<p style="text-align:center; color:#94a3b8;">Aguardando o robô da nuvem gerar a primeira programação...</p>';
+      }
+    }
+
+    function gerarSeletorDatas() {
+      const slider = document.getElementById('datesSlider');
+      slider.innerHTML = '';
+      for (let i = -5; i <= 5; i++) {
+        const d = new Date();
+        d.setDate(d.getDate() + i);
+        const isToday = i === 0;
+        const formatoTexto = d.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: '2-digit' });
+        const chip = document.createElement('div');
+        chip.className = `date-chip ${isToday ? 'active' : ''}`;
+        chip.innerText = isToday ? `Hoje (${formatoTexto})` : formatoTexto;
+        chip.onclick = () => {
+          document.querySelectorAll('.date-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+        };
+        slider.appendChild(chip);
+      }
+    }
+
+    function renderizarCinemas(dados) {
+      const container = document.getElementById('cinemasContainer');
+      container.innerHTML = '';
+
+      dados.forEach(cinema => {
+        let filmesHtml = '';
+        if (!cinema.filmes || cinema.filmes.length === 0) {
+          filmesHtml = '<p style="color:var(--text-muted); font-size:13px;">Nenhum filme listado nesta extração.</p>';
+        } else {
+          cinema.filmes.forEach(f => {
+            const badgeClass = (f.audio || '').toLowerCase().includes('leg') ? 'badge-leg' : 'badge-dub';
+            const horariosHtml = (f.horarios || []).map(h => `<span class="time-chip">${h}</span>`).join('');
+            filmesHtml += `
+              <div class="movie-item">
+                <div class="movie-header">
+                  <span class="movie-title">${f.titulo}</span>
+                  <span class="badge-audio ${badgeClass}">${f.audio || 'Dublado'}</span>
+                </div>
+                <div class="schedules-list">${horariosHtml}</div>
+                ${f.print_referencia ? `<a href="${f.print_referencia}" target="_blank" class="btn-print">📷 Ver Print Capturado</a>` : ''}
+              </div>
+            `;
+          });
+        }
+
+        container.innerHTML += `
+          <div class="cinema-card">
+            <div class="cinema-header">
+              <div>
+                <h2 class="cinema-title">${cinema.local}</h2>
+                <span class="cinema-group">${cinema.grupo}</span>
+              </div>
+              <div class="cinema-actions">
+                <a href="${cinema.maps}" target="_blank" class="btn-icon">📍 Maps</a>
+                <a href="${cinema.site}" target="_blank" class="btn-icon">🌐 Site</a>
+              </div>
+            </div>
+            <div class="filmes-lista">${filmesHtml}</div>
+          </div>
+        `;
+      });
+    }
+
+    function filtrarDados() {
+      const termo = document.getElementById('searchInput').value.toLowerCase().trim();
+      if (!termo) { renderizarCinemas(dadosCinemas); return; }
+
+      const dadosFiltrados = dadosCinemas.map(cinema => ({
+        ...cinema,
+        filmes: (cinema.filmes || []).filter(f => f.titulo.toLowerCase().includes(termo))
+      })).filter(c => c.filmes.length > 0);
+
+      renderizarCinemas(dadosFiltrados);
+    }
+
+    window.onload = () => {
+      gerarSeletorDatas();
+      carregarDados();
+    };
+  </script>
+</body>
+</html>
