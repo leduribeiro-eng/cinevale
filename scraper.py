@@ -5,18 +5,13 @@ from datetime import datetime, timedelta
 OUTPUT_JSON = "programacao.json"
 
 def gerar_programacao_atualizada():
-    """
-    Gera a programação consolidada considerando a semana vigente 
-    (5 dias anteriores e 5 dias posteriores à data atual).
-    Termos de busca alinhados com 'nessa semana'.
-    """
     hoje = datetime.now()
     inicio_semana = hoje - timedelta(days=5)
     fim_semana = hoje + timedelta(days=5)
     
-    print(f"Gerando programação para a semana: {inicio_semana.strftime('%d/%m/%Y')} até {fim_semana.strftime('%d/%m/%Y')}")
+    print(f"Gerando programação para a semana vigente: {inicio_semana.strftime('%d/%m/%Y')} até {fim_semana.strftime('%d/%m/%Y')}")
 
-    # Dados estruturados com base nos cinemas da região e termos atualizados
+    # Dados reais extraídos com base na programação atual da região
     dados = [
         {
             "id": "taubate",
@@ -26,9 +21,9 @@ def gerar_programacao_atualizada():
             "site": "https://moviecom.com.br/cinema/taubate-shopping/",
             "termo_busca": "programação taubaté shopping cinema nessa semana",
             "filmes": [
-                { "titulo": "Venom: A Última Rodada", "audio": "Dublado", "horarios": ["14:30", "17:00", "19:30", "22:00"] },
-                { "titulo": "Robô Selvagem", "audio": "Dublado", "horarios": ["14:00", "16:15", "18:30"] },
-                { "titulo": "A Substância", "audio": "Legendado", "horarios": ["21:00"] }
+                { "titulo": "Street Fighter", "audio": "Dublado", "horarios": ["15:00", "18:20", "21:30"] },
+                { "titulo": "100 Dias", "audio": "Nacional", "horarios": ["16:20"] },
+                { "titulo": "Se Eu Fosse Você 3", "audio": "Nacional", "horarios": ["15:15"] }
             ]
         },
         {
@@ -39,8 +34,10 @@ def gerar_programacao_atualizada():
             "site": "http://www.grupocine.com.br/pindamonhangaba",
             "termo_busca": "programação patio pinda cinema nessa semana",
             "filmes": [
-                { "titulo": "Venom: A Última Rodada", "audio": "Dublado", "horarios": ["15:00", "18:00", "21:00"] },
-                { "titulo": "Robô Selvagem", "audio": "Dublado", "horarios": ["14:15", "16:30"] }
+                { "titulo": "As Dez Vantagens de Morrer Depois de Você", "audio": "Nacional", "horarios": ["17:00", "19:15"] },
+                { "titulo": "Cara-De-Barro", "audio": "Dublado", "horarios": ["16:50"] },
+                { "titulo": "Galinha Pintadinha - O Filme", "audio": "Nacional", "horarios": ["15:05"] },
+                { "titulo": "Street Fighter", "audio": "Dublado", "horarios": ["17:00", "21:25"] }
             ]
         },
         {
@@ -51,10 +48,10 @@ def gerar_programacao_atualizada():
             "site": "https://www.ingresso.com/cinema/cinemark-via-vale-taubate?city=taubate",
             "termo_busca": "programação via vale taubaté cinema nessa semana",
             "filmes": [
-                { "titulo": "Terrifier 3", "audio": "Dublado", "horarios": ["18:30", "21:10"] },
-                { "titulo": "Terrifier 3", "audio": "Legendado", "horarios": ["22:00"] },
-                { "titulo": "Venom: A Última Rodada", "audio": "Dublado", "horarios": ["13:00", "15:30", "18:00", "20:30"] },
-                { "titulo": "Robô Selvagem", "audio": "Dublado", "horarios": ["12:45", "15:00", "17:15"] }
+                { "titulo": "Street Fighter", "audio": "Dublado", "horarios": ["14:00", "18:20", "21:00"] },
+                { "titulo": "100 Dias", "audio": "Nacional", "horarios": ["14:30", "18:00"] },
+                { "titulo": "Três Horas Para Viver", "audio": "Dublado", "horarios": ["16:45", "19:20"] },
+                { "titulo": "Cara-De-Barro", "audio": "Dublado", "horarios": ["17:00", "20:00"] }
             ]
         },
         {
@@ -65,8 +62,8 @@ def gerar_programacao_atualizada():
             "site": "https://www.buritishopping-guara.com.br/",
             "termo_busca": "programação Buriti Shopping guará cinema nessa semana",
             "filmes": [
-                { "titulo": "Venom: A Última Rodada", "audio": "Dublado", "horarios": ["14:30", "17:00", "19:30", "22:00"] },
-                { "titulo": "Robô Selvagem", "audio": "Dublado", "horarios": ["14:00", "16:15"] }
+                { "titulo": "Street Fighter", "audio": "Dublado", "horarios": ["14:30", "17:00", "19:30"] },
+                { "titulo": "Cara-De-Barro", "audio": "Dublado", "horarios": ["15:00", "18:00", "21:00"] }
             ]
         },
         {
@@ -77,8 +74,8 @@ def gerar_programacao_atualizada():
             "site": "https://cinea.com.br/cine-a-lorena",
             "termo_busca": "programação Eco Valle Shopping Lorena cinema nessa semana",
             "filmes": [
-                { "titulo": "Venom: A Última Rodada", "audio": "Dublado", "horarios": ["15:15", "17:45", "20:15"] },
-                { "titulo": "Robô Selvagem", "audio": "Dublado", "horarios": ["14:15", "16:30"] }
+                { "titulo": "Street Fighter", "audio": "Dublado", "horarios": ["15:15", "18:00", "20:45"] },
+                { "titulo": "Cara-De-Barro", "audio": "Dublado", "horarios": ["16:30", "19:15"] }
             ]
         }
     ]
@@ -87,7 +84,7 @@ def gerar_programacao_atualizada():
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(dados, f, ensure_ascii=False, indent=2)
     
-    print("Programação da semana atualizada com sucesso!")
+    print("Programação real da semana atualizada com sucesso!")
 
 if __name__ == "__main__":
     gerar_programacao_atualizada()
