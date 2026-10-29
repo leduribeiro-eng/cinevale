@@ -1,0 +1,36 @@
+name: Atualizar Programacao de Cinemas
+
+on:
+  schedule:
+    - cron: '0 6 * * 4' # Roda toda quinta-feira às 06:00 UTC
+  workflow_dispatch:     # Permite testar clicando em um botão no site do GitHub
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permite que o robô salve o JSON atualizado de volta no repositório
+    steps:
+      - name: Baixar código do repositório
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Instalar Playwright e dependências
+        run: |
+          pip install playwright
+          playwright install chromium
+
+      - name: Executar robô de extração
+        run: python scraper.py
+
+      - name: Enviar alterações para o repositório
+        run: |
+          git config --global user.name "Robô CineVale"
+          git config --global user.email "robo@github.com"
+          git add programacao.json screenshots/ || true
+          git commit -m "Atualização automática da programação semanal [skip ci]" || echo "Sem mudanças"
+          git push
