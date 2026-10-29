@@ -1,0 +1,87 @@
+[
+  {
+    "id": "taubate",
+    "local": "Taubaté Shopping",
+    "grupo": "Moviecom",
+    "maps": "https://maps.app.goo.gl/CirFBWyPfpBbhRTX6",
+    "site": "https://moviecom.com.br/cinema/taubate-shopping/",
+    "filmes": [
+      {
+        "titulo": "Consulte a grade no site oficial",
+        "audio": "Dublado",
+        "horarios": [
+          "--:--"
+        ],
+        "print_referencia": "screenshots/moviecom_geral.png"
+      }
+    ]
+  },
+  {
+    "id": "pinda",
+    "local": "Patio Pinda",
+    "grupo": "Grupo Cine",
+    "maps": "https://maps.app.goo.gl/6uCEPZKJmkBUumCDA",
+    "site": "http://www.grupocine.com.br/pindamonhangaba",
+    "filmes": [
+      {
+        "titulo": "Programação Atualizada (Grupo Cine)",
+        "audio": "Dublado / Legendado",
+        "horarios": [
+          "Consulte os horários"
+        ],
+        "print_referencia": "screenshots/pinda.png"
+      }
+    ]
+  },
+  {
+    "id": "viavale",
+    "local": "Via Vale Taubaté",
+    "grupo": "Cinemark",
+    "maps": "https://maps.app.goo.gl/YarRsrmCyJZtp27V8",
+    "site": "https://www.ingresso.com/cinema/cinemark-via-vale-taubate?city=taubate",
+    "filmes": [
+      {
+        "titulo": "Programação Atualizada (Cinemark)",
+        "audio": "Dublado / Legendado",
+        "horarios": [
+          "Consulte os horários"
+        ],
+        "print_referencia": "screenshots/viavale.png"
+      }
+    ]
+  },
+  {
+    "id": "guara",
+    "local": "Buriti Shopping Guará",
+    "grupo": "Cinemais",
+    "maps": "https://maps.app.goo.gl/XKC9BreksvCxsrof9",
+    "site": "https://www.buritishopping-guara.com.br/",
+    "filmes": [
+      {
+        "titulo": "Programação Atualizada (Cinemais)",
+        "audio": "Dublado / Legendado",
+        "horarios": [
+          "Consulte os horários"
+        ],
+        "print_referencia": "screenshots/guara.png"
+      }
+    ]
+  },
+  {
+    "id": "lorena",
+    "local": "Eco Valle Shopping Lorena",
+    "grupo": "Cine A",
+    "maps": "https://maps.app.goo.gl/YYJ1kPiSiYk1Hcwq5",
+    "site": "https://cinea.com.br/cine-a-lorena",
+    "filmes": [
+      {
+        "titulo": "Programação Atualizada (Cine A)",
+        "audio": "Dublado / Legendado",
+        "horarios": [
+          "Consulte os horários"
+        ],
+        "print_referencia": "screenshots/lorena.png"
+      }
+    ]
+  }
+]
