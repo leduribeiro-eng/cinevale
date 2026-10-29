@@ -5,6 +5,7 @@
     "grupo": "Moviecom",
     "maps": "https://maps.app.goo.gl/CirFBWyPfpBbhRTX6",
     "site": "https://moviecom.com.br/cinema/taubate-shopping/",
+    "termo_busca": "programação taubaté shopping cinema nessa semana",
     "filmes": [
       {
         "titulo": "Venom: A Última Rodada",
@@ -40,6 +41,7 @@
     "grupo": "Grupo Cine",
     "maps": "https://maps.app.goo.gl/6uCEPZKJmkBUumCDA",
     "site": "http://www.grupocine.com.br/pindamonhangaba",
+    "termo_busca": "programação patio pinda cinema nessa semana",
     "filmes": [
       {
         "titulo": "Venom: A Última Rodada",
@@ -66,6 +68,7 @@
     "grupo": "Cinemark",
     "maps": "https://maps.app.goo.gl/YarRsrmCyJZtp27V8",
     "site": "https://www.ingresso.com/cinema/cinemark-via-vale-taubate?city=taubate",
+    "termo_busca": "programação via vale taubaté cinema nessa semana",
     "filmes": [
       {
         "titulo": "Terrifier 3",
@@ -109,6 +112,7 @@
     "grupo": "Cinemais",
     "maps": "https://maps.app.goo.gl/XKC9BreksvCxsrof9",
     "site": "https://www.buritishopping-guara.com.br/",
+    "termo_busca": "programação Buriti Shopping guará cinema nessa semana",
     "filmes": [
       {
         "titulo": "Venom: A Última Rodada",
@@ -136,6 +140,7 @@
     "grupo": "Cine A",
     "maps": "https://maps.app.goo.gl/YYJ1kPiSiYk1Hcwq5",
     "site": "https://cinea.com.br/cine-a-lorena",
+    "termo_busca": "programação Eco Valle Shopping Lorena cinema nessa semana",
     "filmes": [
       {
         "titulo": "Venom: A Última Rodada",
