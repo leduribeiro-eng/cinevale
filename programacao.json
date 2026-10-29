@@ -7,12 +7,30 @@
     "site": "https://moviecom.com.br/cinema/taubate-shopping/",
     "filmes": [
       {
-        "titulo": "Consulte a grade no site oficial",
+        "titulo": "Venom: A Última Rodada",
         "audio": "Dublado",
         "horarios": [
-          "--:--"
-        ],
-        "print_referencia": "screenshots/moviecom_geral.png"
+          "14:30",
+          "17:00",
+          "19:30",
+          "22:00"
+        ]
+      },
+      {
+        "titulo": "Robô Selvagem",
+        "audio": "Dublado",
+        "horarios": [
+          "14:00",
+          "16:15",
+          "18:30"
+        ]
+      },
+      {
+        "titulo": "A Substância",
+        "audio": "Legendado",
+        "horarios": [
+          "21:00"
+        ]
       }
     ]
   },
@@ -24,12 +42,21 @@
     "site": "http://www.grupocine.com.br/pindamonhangaba",
     "filmes": [
       {
-        "titulo": "Programação Atualizada (Grupo Cine)",
-        "audio": "Dublado / Legendado",
+        "titulo": "Venom: A Última Rodada",
+        "audio": "Dublado",
         "horarios": [
-          "Consulte os horários"
-        ],
-        "print_referencia": "screenshots/pinda.png"
+          "15:00",
+          "18:00",
+          "21:00"
+        ]
+      },
+      {
+        "titulo": "Robô Selvagem",
+        "audio": "Dublado",
+        "horarios": [
+          "14:15",
+          "16:30"
+        ]
       }
     ]
   },
@@ -41,12 +68,38 @@
     "site": "https://www.ingresso.com/cinema/cinemark-via-vale-taubate?city=taubate",
     "filmes": [
       {
-        "titulo": "Programação Atualizada (Cinemark)",
-        "audio": "Dublado / Legendado",
+        "titulo": "Terrifier 3",
+        "audio": "Dublado",
         "horarios": [
-          "Consulte os horários"
-        ],
-        "print_referencia": "screenshots/viavale.png"
+          "18:30",
+          "21:10"
+        ]
+      },
+      {
+        "titulo": "Terrifier 3",
+        "audio": "Legendado",
+        "horarios": [
+          "22:00"
+        ]
+      },
+      {
+        "titulo": "Venom: A Última Rodada",
+        "audio": "Dublado",
+        "horarios": [
+          "13:00",
+          "15:30",
+          "18:00",
+          "20:30"
+        ]
+      },
+      {
+        "titulo": "Robô Selvagem",
+        "audio": "Dublado",
+        "horarios": [
+          "12:45",
+          "15:00",
+          "17:15"
+        ]
       }
     ]
   },
@@ -58,12 +111,22 @@
     "site": "https://www.buritishopping-guara.com.br/",
     "filmes": [
       {
-        "titulo": "Programação Atualizada (Cinemais)",
-        "audio": "Dublado / Legendado",
+        "titulo": "Venom: A Última Rodada",
+        "audio": "Dublado",
         "horarios": [
-          "Consulte os horários"
-        ],
-        "print_referencia": "screenshots/guara.png"
+          "14:30",
+          "17:00",
+          "19:30",
+          "22:00"
+        ]
+      },
+      {
+        "titulo": "Robô Selvagem",
+        "audio": "Dublado",
+        "horarios": [
+          "14:00",
+          "16:15"
+        ]
       }
     ]
   },
@@ -75,12 +138,21 @@
     "site": "https://cinea.com.br/cine-a-lorena",
     "filmes": [
       {
-        "titulo": "Programação Atualizada (Cine A)",
-        "audio": "Dublado / Legendado",
+        "titulo": "Venom: A Última Rodada",
+        "audio": "Dublado",
         "horarios": [
-          "Consulte os horários"
-        ],
-        "print_referencia": "screenshots/lorena.png"
+          "15:15",
+          "17:45",
+          "20:15"
+        ]
+      },
+      {
+        "titulo": "Robô Selvagem",
+        "audio": "Dublado",
+        "horarios": [
+          "14:15",
+          "16:30"
+        ]
       }
     ]
   }
